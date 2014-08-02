@@ -1,0 +1,21 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jul 31 21:00:06 2014
+
+@author: amne51ac
+
+All content licensed under GPL unless otherwise noted or required.
+"""
+
+pyserial.sourceforge.net
+http://qgroundcontrol.org/mavlink/start
+https://pixhawk.ethz.ch/mavlink/
+http://pixhawk.org/users/tutorials
+http://pixhawk.org/firmware/downloads
+http://www.samba.org/tridge/UAV/pymavlink/apidocs/mavlink.MAVLink_message.html
+http://www.samba.org/tridge/UAV/pymavlink/apidocs/mavlink.MAVLink.html#action_ack_send
+http://pyserial.sourceforge.net/shortintro.html
+file:///I:/Downloads/Tutorial_drone_challenge.pdf
+http://pixhawk.org/modules/pixhawk
+http://pixhawk.org/dev/offboard_communication
+http://pixhawk.org/firmware/downloads#px4_arm_toolchain
