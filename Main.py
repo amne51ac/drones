@@ -1,7 +1,26 @@
 '''amne51ac and n1tr0'''
-import pymavlink, serial
+import mavlink, serial, socket
 import serial.tools.list_ports
+import pickle
 
+HOST = ''
+PORT = 50007
+
+def listen():
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    s.bind((HOST, PORT))
+    s.listen(1)
+    conn, addr = s.accept()
+    print 'Connected by', addr
+    while 1:
+        data = conn.recv(1024)
+        if not data:
+            break
+        print pickle.loads(data)
+        conn.sendall('Acknowledged')
+    conn.close()
+    pass
 
 def comports():
     a = []
