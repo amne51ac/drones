@@ -10,6 +10,7 @@ Created on Thu Aug 07 21:52:25 2014
 
 All content licensed under GPL unless otherwise noted or required.
 """
+from pymavlink import mavutil
 
 def listen():
     import socket, pickle
@@ -81,3 +82,8 @@ def retrans():
         
     mconn.close()
     sconn.close()
+    
+def communicate():
+    m = mavutil.mavlink_connection('com14', baud=57600, autoreconnect=True)
+    m.
+    

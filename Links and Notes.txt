@@ -19,3 +19,11 @@ file:///I:/Downloads/Tutorial_drone_challenge.pdf
 http://pixhawk.org/modules/pixhawk
 http://pixhawk.org/dev/offboard_communication
 http://pixhawk.org/firmware/downloads#px4_arm_toolchain
+https://github.com/mavlink/mavlink/blob/master/pymavlink/examples/magtest.py
+https://github.com/mavlink/mavlink/search?q=waypoint_request_send&ref=cmdform
+https://github.com/mavlink/mavlink/blob/master/pymavlink/mavutil.py
+
+from mavlink import mavutil
+
+mlink = mavutil.mavlink_connection('com14'...)
+
