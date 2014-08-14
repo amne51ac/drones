@@ -2,9 +2,12 @@
 import mavlink, serial, socket
 import serial.tools.list_ports
 import pickle
+from pymavlink import mavutil
 
-HOST = ''
-PORT = 50007
+HOST = 'mavdrop.com'
+PORT = 51337
+
+
 
 def listen():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -35,11 +38,47 @@ def comports():
     return a
 
 def connect():
-    ser = serial.Serial(0, 57600, timeout=10)
-    ser.write('')
-    ser.read()
-    ser.readline()
-    ser.close()
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.settimeout(100)
+    s.connect((HOST, PORT))
+    s.settimeout(None)
+    
+    while 1:
+        data = s.recv(1024)
+        if data:
+            loc = pickle.loads(data)
+            print loc
+            break
+    
+    try:
+        m = mavutil.mavlink_connection('com12', baud=57600)
+    except:
+        print 'Mavlink Error'
+        return
+    
+    wplist = []
+    
+    wplist.append({})
+
+    s.send('Acknowledge')
+    
+    for i in wplist:
+        m.mav.mission_item_send(m.target_system, m.target_component, i['seq'],
+                                i['frame'], i['command'], i['current'],
+                                i['autocontinue'], i['param1'], i['param2'],
+                                i['param3'], i['param4'], i['x'], i['y'],
+                                i['z'])
+                                
+        m.set_mode_auto()
+        m.arducopter_arm()
+    
+    s.send('Enroute')
+    
+    while 1:
+        data = s.recv(1024)
+        if data:
+            print data
+            break
 
 '''
 #CODE FOR PHONE APP
