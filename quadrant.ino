@@ -57,12 +57,19 @@ if (Y > 0 && X > 0)
 
 truecard = (-(cardinal-90)) % 360;
 
-Serial.print(NWval);
-Serial.print(NEval);
-Serial.print(SEval);
-Serial.print(SWval);
-Serial.print(acardinal);
-Serial.print(cardinal);
-Serial.print(truecard);
 
+Serial.print(" NW value : ");
+Serial.println(NWval);
+Serial.print(" NE value : ");
+Serial.println(NEval);
+Serial.print(" SE value : ");
+Serial.println(SEval);
+Serial.print(" SW value : ");
+Serial.println(SWval);
+Serial.print(" acardinal : ");
+Serial.println(acardinal);
+Serial.print(" cardinal : ");
+Serial.print(cardinal);
+Serial.print(" truecard : ");
+Serial.print(truecard);
 }
